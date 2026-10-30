@@ -1,0 +1,6 @@
+title: MLPlay
+description: Puzzle games for Android.
+theme: jekyll-theme-primer
+exclude:
+  - README.md
+  - brand/
