@@ -4,7 +4,10 @@ Usage (from the repo root):
     uv run --with pillow python brand/make_brand.py
 
 Writes brand/developer_icon.png (512x512, 32-bit PNG) and
-brand/developer_header.jpg (4096x2304, under 1 MB). The art is for the studio,
+brand/developer_header.jpg (4096x2304, under 1 MB), plus the website's copies:
+assets/mlplay/wordmark.png (tile and PLAY, for the top bar), favicon.png,
+apple_touch_icon.png and
+og_image.jpg (a smaller header for link previews). The art is for the studio,
 not one game: a blue "ML" tile, and a header of scattered rounded tiles in
 several accent colors around the MLPLAY wordmark. Colors follow the Cagecraft
 dark theme.
@@ -16,6 +19,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 HERE = Path(__file__).resolve().parent
+WEB = HERE.parent / "assets/mlplay"
 BUNGEE = str(HERE / "fonts/Bungee-Regular.ttf")
 NUNITO = str(HERE / "fonts/Nunito-SemiBold.ttf")
 
@@ -44,6 +48,20 @@ def ml_tile(size: int) -> Image.Image:
     return img.resize((size, size), Image.LANCZOS)
 
 
+def make_wordmark(height: int) -> Image.Image:
+    """The ML tile and PLAY side by side, as in the header, on transparency."""
+    s = height * 4
+    font = ImageFont.truetype(BUNGEE, int(s * 0.85))
+    probe = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
+    box = probe.textbbox((0, 0), "PLAY", font=font)
+    gap = s // 9
+    img = Image.new("RGBA", (s + gap + box[2] - box[0] + 8, s), (0, 0, 0, 0))
+    img.alpha_composite(ml_tile(s), (0, 0))
+    ty = (s - s // 24 - (box[3] - box[1])) / 2 - box[1]
+    ImageDraw.Draw(img).text((s + gap - box[0], ty), "PLAY", font=font, fill=TEXT)
+    return img.resize((img.width // 4, height), Image.LANCZOS)
+
+
 def make_icon() -> None:
     size = 512
     img = Image.new("RGBA", (size, size), BG + (255,))
@@ -51,6 +69,10 @@ def make_icon() -> None:
     tile = ml_tile(300)
     img.alpha_composite(tile, ((size - 300) // 2, (size - 300) // 2))
     img.save(HERE / "developer_icon.png")
+    WEB.mkdir(parents=True, exist_ok=True)
+    make_wordmark(72).save(WEB / "wordmark.png")
+    ml_tile(64).save(WEB / "favicon.png")
+    img.convert("RGB").resize((180, 180), Image.LANCZOS).save(WEB / "apple_touch_icon.png")
 
 
 def make_header() -> None:
@@ -106,6 +128,7 @@ def make_header() -> None:
 
     out = HERE / "developer_header.jpg"
     img.convert("RGB").save(out, quality=90, optimize=True)
+    img.convert("RGB").resize((1200, 675), Image.LANCZOS).save(WEB / "og_image.jpg", quality=85, optimize=True)
 
 
 if __name__ == "__main__":
