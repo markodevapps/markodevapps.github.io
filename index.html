@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cagecraft: Killer Sudoku · MLPlay</title>
+<meta name="description" content="Cagecraft is Killer Sudoku for Android, with five difficulties, a combinations helper and no ads. By MLPlay.">
+<meta property="og:title" content="Cagecraft: Killer Sudoku">
+<meta property="og:description" content="Killer Sudoku with five difficulties, a combinations helper and no ads.">
+<meta property="og:image" content="https://mlplay.app/assets/cagecraft/feature_graphic.jpg">
+<meta property="og:url" content="https://mlplay.app/">
+<meta name="theme-color" content="#1A1D24">
+<link rel="icon" href="/assets/cagecraft/icon_192.png">
+<style>
+  :root {
+    --bg: #1A1D24;
+    --panel: #252A33;
+    --text: #E8EAED;
+    --muted: #9AA3B2;
+    --accent: #5B8FD4;
+    --line: #333A46;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  header.top { padding: 20px 0; }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .brand { font-weight: 700; letter-spacing: .08em; color: var(--text); text-decoration: none; }
+  header.top nav a { color: var(--muted); text-decoration: none; margin-left: 20px; font-size: 15px; }
+  header.top nav a:hover { color: var(--text); }
+
+  .hero { text-align: center; padding: 24px 0 56px; }
+  .hero img.banner {
+    width: 100%; max-width: 820px; height: auto;
+    border-radius: 18px; box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  }
+  .hero h1 { font-size: 34px; line-height: 1.2; margin: 36px 0 8px; }
+  .hero p.lead { color: var(--muted); font-size: 19px; margin: 0 auto; max-width: 560px; }
+  .badge {
+    display: inline-block; margin-top: 28px; padding: 12px 22px;
+    border-radius: 12px; background: var(--panel); border: 1px solid var(--line);
+    color: var(--muted); font-size: 15px;
+  }
+  .badge strong { color: var(--text); }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  section h2 { font-size: 26px; margin: 0 0 8px; }
+  section p.sub { color: var(--muted); margin: 0 0 32px; max-width: 640px; }
+
+  .shots {
+    display: flex; gap: 18px; overflow-x: auto; padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+  }
+  .shots figure { margin: 0; flex: 0 0 220px; scroll-snap-align: start; }
+  .shots img {
+    width: 220px; height: auto; display: block;
+    border-radius: 14px; border: 1px solid var(--line);
+  }
+  .shots figcaption { color: var(--muted); font-size: 14px; margin-top: 8px; text-align: center; }
+
+  .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card { background: var(--panel); border-radius: 16px; padding: 24px 26px; }
+  .card h3 { margin: 0 0 10px; font-size: 18px; color: var(--accent); }
+  .card ul { margin: 0; padding-left: 20px; color: var(--muted); }
+  .card li { margin: 6px 0; }
+
+  .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .rule { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; color: var(--muted); }
+  .rule strong { display: block; color: var(--text); margin-bottom: 4px; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: 15px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 27px; }
+    .features { grid-template-columns: 1fr; }
+    section { padding: 44px 0; }
+    .shots figure { flex-basis: 180px; }
+    .shots img { width: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">MLPLAY</a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="/cagecraft/privacy">Privacy</a>
+      <a href="mailto:support@mlplay.app">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero wrap">
+    <img class="banner" src="/assets/cagecraft/feature_graphic.jpg" width="1024" height="500"
+         alt="Cagecraft: Killer Sudoku">
+    <h1>Killer Sudoku, made for your phone</h1>
+    <p class="lead">Five difficulties, more than 1,000 puzzles, a combinations helper and no ads.</p>
+    <div class="badge"><strong>Coming soon</strong> to Google Play for Android</div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>How it plays</h2>
+      <p class="sub">There are no given digits. You start from the cage sums alone.</p>
+      <div class="rules">
+        <div class="rule"><strong>Rows, columns, boxes</strong>Fill each with the digits 1–9, like classic Sudoku.</div>
+        <div class="rule"><strong>Cages add up</strong>The digits in a cage add up to the sum in its corner.</div>
+        <div class="rule"><strong>No repeats</strong>No digit repeats within a cage.</div>
+        <div class="rule"><strong>One answer</strong>Every puzzle is verified to have exactly one solution.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Screenshots</h2>
+      <p class="sub">Dark and light themes, with a bright paper board in both.</p>
+      <div class="shots">
+        <figure><img src="/assets/cagecraft/01_play.jpg" width="540" height="960" loading="lazy" alt="A Medium puzzle in progress, with pencil notes"><figcaption>Notes keypad beside the digits</figcaption></figure>
+        <figure><img src="/assets/cagecraft/02_combinations.jpg" width="540" height="960" loading="lazy" alt="The combinations helper"><figcaption>Combinations helper</figcaption></figure>
+        <figure><img src="/assets/cagecraft/03_light.jpg" width="540" height="960" loading="lazy" alt="The light theme"><figcaption>Light theme</figcaption></figure>
+        <figure><img src="/assets/cagecraft/04_puzzles.jpg" width="540" height="960" loading="lazy" alt="The puzzle list"><figcaption>Five difficulties</figcaption></figure>
+        <figure><img src="/assets/cagecraft/05_stats.jpg" width="540" height="960" loading="lazy" alt="The stats screen"><figcaption>Stats and best times</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Features</h2>
+      <p class="sub">Tools that help without solving the puzzle for you.</p>
+      <div class="features">
+        <div class="card">
+          <h3>Fair puzzles</h3>
+          <ul>
+            <li>Easy, Medium, Hard, Expert and Master</li>
+            <li>Every puzzle has exactly one solution</li>
+            <li>A short tutorial on the first puzzle</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Smart helpers</h3>
+          <ul>
+            <li>Pencil notes on their own keypad</li>
+            <li>Combinations for any sum and cell count</li>
+            <li>Select cells to total their cages, handy for the 45 rule</li>
+            <li>Undo, redo and a checkpoint for trying a guess</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Play your way</h3>
+          <ul>
+            <li>Dark and light themes</li>
+            <li>Pause hides the board and stops the timer</li>
+            <li>17 achievements with Google Play Games</li>
+            <li>Solved puzzles and best times sync between devices</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>No ads, no subscription</h3>
+          <ul>
+            <li>40 puzzles free, the tutorial included</li>
+            <li>Starter Pack and packs of 50 per difficulty</li>
+            <li>Each pack is a one-time purchase</li>
+            <li>Bundles cost less than their packs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 MLPlay · Puzzle games for Android</span>
+    <span>
+      <a href="/cagecraft/privacy">Cagecraft privacy policy</a> ·
+      <a href="mailto:support@mlplay.app">support@mlplay.app</a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>
