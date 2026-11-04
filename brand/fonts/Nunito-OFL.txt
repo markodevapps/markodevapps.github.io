@@ -1,0 +1,4 @@
+Nunito fonts (Regular, Medium, SemiBold, Bold) are from Google Fonts via Fontsource.
+Licensed under the SIL Open Font License (OFL), Version 1.1.
+See https://scripts.sil.org/OFL and https://fonts.google.com/specimen/Nunito
+
